@@ -1,0 +1,29 @@
+*** NOTES ***
+- Implementations will be simplified, and project is packed as development project
+- Csv files will be present in repo
+
+
+*** QUICKSTART ***
+
+1) docker compose up
+2) When both services(web, db) is up and running, initialize db and make migrations:
+    - docker compose exec web sh (go into web container shell)
+    - cd core (go to flask 'app' directory)
+    - flask db init
+    - flask db upgrade
+
+3) Now once again go to the shell (if you left it), and run the script to fill database from csv`s
+(csvs should be present in repo)
+
+    - docker compose exec web sh
+    - python import_from_csvs.py
+
+4) Check if records successfully imported into database,
+if they are, we are good to go to test the endpoints
+
+Endpoint urls:
+    - localhost:5000/products
+    - localhost:5000/products/{prod_id} (detail page, requires 'product_id' query parameter)
+    - localhost:5000/make-review (POST method)
+
+*** If you have any issues regarding the project feel free to cantact me ***
